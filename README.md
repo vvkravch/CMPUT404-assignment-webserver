@@ -5,14 +5,18 @@ CMPUT404-assignment-webserver
 
 See requirements.org (plain-text) for a description of the project.
 
-Make a simple webserver.
+A simple webserver. 
+favicon.ico needs to be turned off in the browser in order to work in a browser.
+Due to a persistent error in the analysis of request the decision for a response was simplified to be improved later, once the bug causing the issue is found.
+
+
 
 Contributors / Licensing
 ========================
 
 Generally everything is LICENSE'D under the Apache 2 license by Abram Hindle.
 
-server.py contains contributions from:
+Project contains contributions from:
 
 * Abram Hindle
 * Eddie Antonio Santos
