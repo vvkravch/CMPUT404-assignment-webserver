@@ -4,7 +4,7 @@ import cgitb
 cgitb.enable()
 
 # Copyright 2013 Abram Hindle, Eddie Antonio Santos
-# 
+# Copyright 2018 Vlad Kravchenko
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
 # You may obtain a copy of the License at
@@ -60,19 +60,23 @@ class MyWebServer(socketserver.BaseRequestHandler):
         print ("Got a request of: %s\n" % self.data)
         splitdata=str(self.data).split()
         print(splitdata[1])
+        if "b'GET"==splitdata[0]:
+           
     
         #headers = mimetools.Message(StringIO.StringIO
         
-        if splitdata[1] == "/do-not-implement-this-page-it-is-not-found":
+            if splitdata[1] == "/do-not-implement-this-page-it-is-not-found":
 
-            self.request.sendall(bytearray(("""HTTP/1.1 404"""),'utf-8'))        
-        if splitdata[1] == "/":
-            response="""HTTP/1.1 200 OK """
-            self.request.sendall(bytearray((response),'utf-8'))
+                self.request.sendall(bytearray(("""HTTP/1.1 404"""),'utf-8'))        
+            if splitdata[1] == "/":
+                response="""HTTP/1.1 200 OK """
+                self.request.sendall(bytearray((response),'utf-8'))
             
-        elif splitdata[1] == "/index.html" or "/base.css" or "/deep/index.html":
+            elif splitdata[1] == "/index.html" or "/base.css" or "/deep/index.html":
    
-            self.request.sendall(bytearray(SendFile(splitdata[1]),'utf-8'))
+                self.request.sendall(bytearray(SendFile(splitdata[1]),'utf-8'))
+        else:
+            self.request.sendall(bytearray(("""HTTP/1.1 405"""),'utf-8'))
             
        
         
